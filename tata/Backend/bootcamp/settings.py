@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-jyasa%@5%k!y9g@fq^k10gh_8e2)wb(=bq7y-lshr#!*$wg&x_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173",]
 
 
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'game.apps.GameConfig',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    #"django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'bootcamp.urls'
