@@ -35,11 +35,10 @@ def add(request, game: AddGameSchema):
 def get_player(request, player_id: int):
     return Player.objects.get(pk=player_id)
 
-#@api.get("/game/{game_id}", response=GameInfo)
-#def get_game(request, game_id: int):
-#    g = Game.objects.get(pk=game_id)
-#    p = get_players(game_id)
-#    return {"game": g, "players": p}
+@api.get("/game/{game_id}", response=GameSchema)
+def get_game(request, game_id: int):
+    g = Game.objects.get(pk=game_id)
+    return g
 
 
 

@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import usePlayGame from "../hooks/usePlayGame"
+import usePlayGame from "../hooks/usePlayGame";
+import useFindAll from "../hooks/useFindGame";
+import { useParams } from 'react-router-dom';
 
 export default function Game() {
     const { Play } = usePlayGame();
-    const blackjack = 21
+    const { id } = useParams();
+    const { gameData } = useFindAll(id);
 
     const [formData, setFormData] = useState({
         dice_number: '1',
@@ -24,6 +27,9 @@ export default function Game() {
         }
     }
 
+    //console.log(id)
+    console.log({gameData})
+
 
     return ( 
         <>
@@ -37,6 +43,7 @@ export default function Game() {
             </select>
             <br /><br />
             <button onClick={handleRoll}>Lancer</button> 
-        </> 
+        
+        </>
     )
 }
