@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import useRollDices from "../hooks/useRollDices"
+import usePlayGame from "../hooks/usePlayGame"
 
 export default function Game() {
-    const { roll } = useRollDices();
+    const { Play } = usePlayGame();
     const blackjack = 21
 
     const [formData, setFormData] = useState({
@@ -20,11 +20,11 @@ export default function Game() {
     const handleRoll = () => {
         const dice_Count = Number(formData.dice_number); 
         if (dice_Count >= 1 && dice_Count <= 3) {  
-            console.log(roll(dice_Count));
+            console.log(Play(dice_Count));
         }
     }
 
-    
+
     return ( 
         <>
             <h1>BlackJack</h1> 
@@ -37,10 +37,6 @@ export default function Game() {
             </select>
             <br /><br />
             <button onClick={handleRoll}>Lancer</button> 
-            <br />
-            <p>{formData.dice_number}</p>
-
-
         </> 
     )
 }
