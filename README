@@ -1,0 +1,18 @@
+Dossiers Backend et Frontend dans le Dossiers Tata
+
+Nom de l'envirronement Conda : bootcamp
+
+Django version 5.1.2
+Python version 3.11.4
+
+Lancer le Back :
+
+    - cd Backend
+    - conda activate bootcamp
+    - py manage.py runserver
+
+Lancer le Front :
+
+    - cd .\Frontend\vite-project\
+    - npm run dev
+
