@@ -1,4 +1,4 @@
-export default function useCreateGame() {
+export default function useCreateGame(game_name, name_list) {
 
     const createGame = () => {
         fetch("http://127.0.0.1:8000/api/create_games", {
@@ -8,8 +8,8 @@ export default function useCreateGame() {
                 "Content-Type":  "application/json",
             },
             body: JSON.stringify({
-                name: "game_name",
-                players: ["toto", "tata"],
+                name: game_name,
+                players: name_list,
             }),
         })
         .then((response) => {

@@ -5,25 +5,27 @@ import './App.css'
 import PlayerTable from './components/PlayerTable'
 import { Route, Routes, useNavigate} from "react-router-dom"
 import Home from "./pages/Home"
-import Toto from "./pages/Toto"
+import Game from "./pages/Game"
 
 function App() {
   const navigate = useNavigate()
 
   return (
     <>
-      <ul>
-        <li>
+      {/*<ul>
+         <li>
           <button onClick={() => navigate("/")}>Home </button>
         </li>
-        <li>
+       <li>
         <button onClick={() => navigate("/Toto")}>Toto </button>
         </li>
-      </ul>
+      </ul>*/}
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/toto" element={<Toto />}/>
+        <Route path="/Game" element={<Game />}/>
       </Routes>
+
+      {/*<button onClick={() => navigate("/Game")}>Jouer </button>*/}
     </>
   )
 }
