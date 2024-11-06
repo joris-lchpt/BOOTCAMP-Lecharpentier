@@ -1,6 +1,6 @@
-export default function useCreateGame(game_name, name_list) {
+export default function useCreateGame() {
 
-    const createGame = () => {
+    const createGame = (game_name, name_list) => {
         fetch("http://127.0.0.1:8000/api/create_games", {
             method: "POST",
             headers: {
@@ -12,11 +12,10 @@ export default function useCreateGame(game_name, name_list) {
                 players: name_list,
             }),
         })
-        .then((response) => {
-            return response.json();
-        })
-        .then((response) => {
-            console.log(response);
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            return data.id;
         })
         .catch((reason) => {
             console.error(reason);

@@ -7,12 +7,12 @@ api = NinjaAPI()
 class PlayerSchema(ModelSchema):
     class Meta:
         model = Player
-        fields = ["name", "score"]
+        fields = ["id","name", "score"]
 
 class GameSchema(ModelSchema):
     class Meta:
         model = Game
-        fields = ["name", "turn", "ended"]
+        fields = ["id", "name", "turn", "ended"]
     players: list[PlayerSchema]
 
 #class GameInfo(Schema):

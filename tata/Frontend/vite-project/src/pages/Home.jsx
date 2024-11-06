@@ -3,7 +3,7 @@ import useCreateGame from "../hooks/useCreateGame";
 import { useNavigate} from "react-router-dom"
 
 export default function Home() {
-    const { createGame } = useCreateGame(formData.game_name, name_list);
+    const { createGame } = useCreateGame();
     const navigate = useNavigate()
     let name_list = []
     
@@ -37,8 +37,12 @@ export default function Home() {
         if (name_list.length >= 2 && formData.game_name !== '') {
             console.log(formData.game_name)
             console.log(name_list)
-            createGame(formData.game_name, name_list)
-            navigate("/Game")
+            
+            createGame(formData.game_name, name_list).then((gameId) => {
+                if (gameId) {
+                    navigate(`/game/${gameId}`);
+                }
+            });
         }
         else if (formData.game_name == '') {
             alert('Nom de partie obligatoire')
