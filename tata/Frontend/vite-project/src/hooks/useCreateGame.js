@@ -1,7 +1,7 @@
 export default function useCreateGame() {
 
     const createGame = (game_name, name_list) => {
-        fetch("http://127.0.0.1:8000/api/create_games", {
+        return fetch("http://127.0.0.1:8000/api/create_games", {
             method: "POST",
             headers: {
                 Accept: "application/json",
