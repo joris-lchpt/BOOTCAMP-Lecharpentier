@@ -7,7 +7,7 @@ api = NinjaAPI()
 class PlayerSchema(ModelSchema):
     class Meta:
         model = Player
-        fields = ["id","name", "score"]
+        fields = ["id", "name", "score"]
 
 class GameSchema(ModelSchema):
     class Meta:
@@ -15,21 +15,16 @@ class GameSchema(ModelSchema):
         fields = ["id", "name", "turn", "ended"]
     players: list[PlayerSchema]
 
-#class GameInfo(Schema):
-#    game: GameSchema
-#    players: list[PlayerSchema]
-
 class AddGameSchema(Schema):
     name: str
     players: list[str]
 
-class AddPlayerSchema(Schema):
-    name: str
-
 @api.post("/create_games", response=GameSchema)
 def add(request, game: AddGameSchema):
-    return create_games(game.name, game.players)
-    #return Game.objects.create(name=game.name)
+    game_instance = Game.objects.create(name=game.name)
+    for player_name in game.players:
+        Player.objects.create(name=player_name, score=0, game=game_instance)
+    return game_instance
 
 @api.get("/player/{player_id}", response=PlayerSchema)
 def get_player(request, player_id: int):
@@ -37,11 +32,4 @@ def get_player(request, player_id: int):
 
 @api.get("/game/{game_id}", response=GameSchema)
 def get_game(request, game_id: int):
-    g = Game.objects.get(pk=game_id)
-    return g
-
-
-
-
-
-
+    return Game.objects.get(pk=game_id)
